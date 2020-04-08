@@ -131,5 +131,5 @@ configure(rootProject) {
   通过  it.name == ''的方式来指定子项目名称
 */
 configure(subprojects.findAll { it.name == 'greeter' || it.name == 'greeting-library' }) {
-
+  
 }
