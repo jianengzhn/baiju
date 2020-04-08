@@ -10,24 +10,32 @@
 
 #### 特点与特色
 
-1、使用Gradle做项目依赖与相建管理，把项目模块化拆分，构建脚本配置更简练、更方便；项目更易开发、易扩展。
+1. 使用Gradle做项目依赖与相建管理，把项目模块化拆分，构建脚本配置更简练、更方便；项目更易开发、易扩展。
 
-2、以[Spring Boot](https://spring.io/projects/spring-boot#overview)最新稳定版(2.2.6)为基础开发，[MyBatis](https://mybatis.io/)为数据访问层，Spring Security Kerberos为权限授权层，Redis对常用数据进行缓存。
+2. 以[Spring Boot](https://spring.io/projects/spring-boot#overview)最新稳定版(2.2.6)为基础开发，[MyBatis](https://mybatis.io/)为数据访问层，Spring Security Kerberos为权限授权层，Redis对常用数据进行缓存。
 
-3、前端页面，使用angular，主题使用[Ant Design of Angular](https://ng.ant.design/docs/introduce/zh)
+3. 前端页面，使用angular，主题使用[Ant Design of Angular](https://ng.ant.design/docs/introduce/zh)
 
-4、RestFul风格，独立提供标准Rest服务API，可以快速实现自己的业务，提供需要的服务。
+4. RestFul风格，独立提供标准Rest服务API，可以快速实现自己的业务，提供需要的服务。
 
-6、代码开发规范遵循阿里巴巴Java开发手册([最新版下载](https://github.com/alibaba/p3c))
+5. 代码开发规范遵循阿里巴巴Java开发手册([最新版下载](https://github.com/alibaba/p3c))
 
-5、定位于互联网企业架构，已内置企业信息化系统的基础功能和高效的代码生成工具，包括：系统权限组件、数据权限组件、数据字典组件、核心工具组件、代码生成等。
+6. 定位于互联网企业架构，已内置企业信息化系统的基础功能和高效的代码生成工具，包括：系统权限组件、数据权限组件、数据字典组件、核心工具组件、代码生成等。
 
-#### 技术选开型
-1、[Saturn](https://vipshop.github.io/Saturn/#/)
+#### 技术选型和文档
+
+- Gradle，构建工具（[官方文档](https://docs.gradle.org)）
+- Spring Boot（[官方文档](https://spring.io/projects/spring-boot#learn)）
+- Druid Spring Boot Starter,数据库连接池（[官方中文文档](https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter/)）,（[Druid其它文档](https://github.com/alibaba/druid/wiki/%E9%A6%96%E9%A1%B5)）
+- MyBatis，数据库访问（[官方中文文档](https://mybatis.org/mybatis-3/zh/index.html)） 
+- MyBatisb通用Mapper插件（[官方中文文档](https://mybatis.io/)）
+- Saturn，定时任务（[官方中文文档](https://vipshop.github.io/Saturn/#/)）
+
+- Ant Design of Angular，后台的管理界面（[官方文档](https://ng.ant.design/docs/introduce/zh)）
 
 ### 软件架构
 
-软件架构说明
+待更新...
 
 ### 安装教程
 
