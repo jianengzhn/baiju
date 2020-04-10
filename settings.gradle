@@ -8,3 +8,4 @@
  */
 
 rootProject.name = 'baiju'
+include 'baiju-eureka-server'

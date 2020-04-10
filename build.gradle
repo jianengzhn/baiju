@@ -30,7 +30,10 @@ ext {
 	freemarkerVersion    = "2.3.27-incubating"
 	groovyVersion        = "2.4.15"
 	tomcatVersion        = "8.5.31"
-    
+
+    springCloudVersion   = "Hoxton.SR3"
+	springSecurityVersion = "5.3.1.RELEASE"
+
 	gradleScriptDir = "${rootProject.projectDir}/gradle"
 }
 
@@ -40,6 +43,12 @@ configure(allprojects) { project ->
     group = 'com.eppear'
     version = '0.0.1-SNAPSHOT'
     sourceCompatibility = '1.8'
+
+	apply plugin:  'org.springframework.boot'
+	apply plugin:  'io.spring.dependency-management'
+	apply plugin:  'java'
+	apply plugin:  'idea'
+	apply plugin:  'eclipse'
 
     /*配置公用仓库，从下到上优先级升高*/
     // 由于全局参数已配置，项目中可以去掉
@@ -68,24 +77,33 @@ configure(allprojects) { project ->
     */
 
     /*公共基础依赖*/
-    dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter'
-        testImplementation('org.springframework.boot:spring-boot-starter-test') {
-            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-        }
-    }
-
+    //dependencies {
+		//implementation 'org.springframework.boot:spring-boot-starter'
+        //implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+//        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+//            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+//        }
+//    }
+	dependencyManagement {
+		imports {
+			mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+			//mavenBom "org.springframework.security:spring-security-bom:${springSecurityVersion}"
+		}
+//		dependencies {
+//			dependency 'org.springframework.boot:spring-boot-starter:2.2.6.RELEASE'
+//		}
+	}
     /* 构建信息*/
-    springBoot {
-        buildInfo {
-            properties {
-                artifact = 'baiju'
-                version = '1.0.0'
-                group = 'com.eppear'
-                name = 'BaiJu System'                
-            }
-        }
-    }
+//    springBoot {
+//        buildInfo {
+//            properties {
+//                artifact = 'baiju'
+//                version = '1.0.0'
+//                group = 'com.eppear'
+//                name = 'BaiJu System'
+//            }
+//        }
+//    }
 
     // 相关连接
     ext.javadocLinks = [

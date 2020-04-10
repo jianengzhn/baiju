@@ -1,0 +1,14 @@
+// 本项目特有的依赖
+dependencies {
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation 'org.springframework.security:spring-security-test'
+}
+
+test {
+    useJUnitPlatform()
+}
