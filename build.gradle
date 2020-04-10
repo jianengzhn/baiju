@@ -42,6 +42,8 @@ configure(allprojects) { project ->
     sourceCompatibility = '1.8'
 
     /*配置公用仓库，从下到上优先级升高*/
+    // 由于全局参数已配置，项目中可以去掉
+    /*
     repositories{
         mavenLocal()
         maven {
@@ -63,6 +65,7 @@ configure(allprojects) { project ->
             url "http://oss.jfrog.org/artifactory/oss-snapshot-local/"
         }
     }
+    */
 
     /*公共基础依赖*/
     dependencies {
@@ -131,5 +134,5 @@ configure(rootProject) {
   通过  it.name == ''的方式来指定子项目名称
 */
 configure(subprojects.findAll { it.name == 'greeter' || it.name == 'greeting-library' }) {
-  
+
 }
