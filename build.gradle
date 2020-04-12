@@ -4,3 +4,185 @@
  * This is a general purpose Gradle build.
  * Learn how to create Gradle builds at https://guides.gradle.org/creating-new-gradle-builds
  */
+
+ /*本构建脚本内部使用的部分*/
+ buildscript {
+	 /*自定义属性声明，如版本号*/
+	 ext {
+		 // 本应用的属性
+		 app=[
+			 // 系统名称
+			 appName : '白驹中后台管理系统',
+			 // 系统版本
+			 appVersion : '0.0.1-SNAPSHOT',
+			 appDescribe : '基于SpringBoot的管理系统',
+			 appGroup : 'com.eppear'
+		 ]
+		 // 相关链接
+		 link =[
+			 // 系统链接
+			 linkHomepage : 'http://www.eppear.com/baiju',
+			 linkCi : 'https://build.spring.io/browse/SPR',
+			 // 源码地址
+			 linkScmUrl : 'https://github.com/jianengzhn/baiju',
+			 linkIssue : 'https://github.com/jianengzhn/baiju/issues'
+		 ]
+		 /*相关依赖的版本号声明*/
+		 ver=[
+			 springBootVersion : '2.2.6.RELEASE',
+			 springCloudVersion : "Hoxton.SR3",
+			 springSecurityVersion : "5.3.1.RELEASE"
+
+		 ]
+		 /*其它相关变量的声明*/
+
+	 }
+ }
+
+/*所有项目共享的插件*/
+plugins {
+    id 'org.springframework.boot' version '2.2.6.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+}
+
+/*打包时manifest文件信息配置*/
+ext.sharedManifest = manifest {
+	attributes( "Implementation-Title": "${app.appName}",
+		"Implementation-Version": "${app.appVersion}"
+	)
+}
+
+/*公共配置，所有项目*/
+configure(allprojects) { project ->
+    /* 项目属性信息*/
+    group = "${app.appGroup}"
+    version = "${app.appVersion}"
+    sourceCompatibility = '1.8'
+
+	apply plugin:  'idea'
+	apply plugin:  'eclipse'
+
+    /*配置公用仓库，从下到上优先级升高*/
+    // 由于全局参数已配置，项目中可以去掉,如未配置则要打开此处
+    /*
+    repositories{
+        mavenLocal()
+        maven {
+            name "阿里云公共仓库"
+            url "https://maven.aliyun.com/repository/public/"
+        }
+        mavenCentral()
+        jcenter()
+        maven{
+            name "spring仓库快照(snapshot)"
+            url "https://repo.spring.io/snapshot"
+        }
+        maven{
+            name "spring仓库里程碑(milestone)"
+            url "https://repo.spring.io/milestone"
+        }
+        maven{
+            name "pdf转换仓库"
+            url "http://oss.jfrog.org/artifactory/oss-snapshot-local/"
+        }
+    }
+    */
+
+/*	dependencyManagement {
+		imports {
+			mavenBom "org.springframework.cloud:spring-cloud-dependencies:${ver.springCloudVersion}"
+			//mavenBom "org.springframework.security:spring-security-bom:${springSecurityVersion}"
+		}
+	}*/
+
+    // 相关连接
+    ext.javadocLinks = [
+		"http://docs.oracle.com/javase/8/docs/api/",
+		"http://docs.oracle.com/javaee/7/api/",
+		"http://docs.oracle.com/cd/E13222_01/wls/docs90/javadocs/",  // CommonJ
+		"http://pic.dhe.ibm.com/infocenter/wasinfo/v7r0/topic/com.ibm.websphere.javadoc.doc/web/apidocs/",
+		"http://glassfish.java.net/nonav/docs/v3/api/",
+		"http://tiles.apache.org/tiles-request/apidocs/",
+		"http://tiles.apache.org/framework/apidocs/",
+		"http://www.eclipse.org/aspectj/doc/released/aspectj5rt-api/",
+		"http://ehcache.org/apidocs/2.10.4",
+		"http://quartz-scheduler.org/api/2.2.1/",
+		"http://fasterxml.github.io/jackson-core/javadoc/2.8/",
+		"http://fasterxml.github.io/jackson-databind/javadoc/2.8/",
+		"http://fasterxml.github.io/jackson-dataformat-xml/javadoc/2.8/",
+		"http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/"
+	] as String[]
+
+}
+
+// 配置根项目属性
+configure(rootProject) {
+
+	description = "BaiJu Sytem"
+	apply plugin: "groovy"
+	// don't publish the default jar for the root project
+	configurations.archives.artifacts.clear()
+
+	// 自定义任务
+    task showRepos {
+        group = "自定义任务" 
+        description= "查看仓库配置"
+        doLast{
+            println "  仓库列表为："
+            repositories.each{
+                println "     ${it.name} - ${it.url}"
+            }            
+        }
+    }
+	/*由于根项目是空项目，无JAVA代码，而springBoot的Gradle插件默认是打可执行包，所以要关掉，否则在根项目执行打包会报错*/
+	bootJar{
+		enabled = false
+	}
+}
+
+/* 所有子项目的专用配置*/
+subprojects { project ->
+	apply plugin:  'org.springframework.boot'
+	apply plugin:  'io.spring.dependency-management'
+	apply plugin:  'java'
+
+	/*声明版本仲裁器，子项目中可以省去版本号，由此模块自动匹配版本*/
+	dependencyManagement {
+		imports {
+			mavenBom "org.springframework.cloud:spring-cloud-dependencies:${ver.springCloudVersion}"
+		}
+	}
+
+	/*构建信息*/
+    springBoot {
+        buildInfo {
+            properties {
+                artifact = 'baiju'
+                version = "${app.appVersion}"
+                group = "${app.appGroup}"
+                name = 'BaiJu System'
+            }
+        }
+    }
+
+	/*配置可以执行Jar包的版本属性信息*/
+	bootJar{
+		println "执行了manifest配置"
+		manifest = project.manifest {
+			from sharedManifest
+		}
+	}
+}
+/*
+ * 部分子项目的通用设置
+ * 除 baiju-common-config 项目外，都要依赖它
+ * 通过  it.name == ''的方式来指定子项目名称
+ */
+configure(subprojects.findAll { it.name != 'baiju-common-config' }) {
+	dependencies {
+		implementation project(":baiju-common-config")
+	}
+}

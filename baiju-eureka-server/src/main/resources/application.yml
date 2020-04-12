@@ -1,0 +1,20 @@
+
+server:
+  port: 7000
+eureka:
+  client:
+    #是否将自己注册到Eureka服务中
+    register-with-eureka: false
+    #是否从Eureka服务中获取注册信息
+    fetch-registry: false
+    #Eureka客户端与服务端进行交互的地址
+    service-url:
+      defaultZone: http://127.0.0.1:${server.port}/eureka/
+spring:
+  application:
+    #注册中心名称
+    name: baiju-eureka-server
+  security:
+    user:
+      name: user
+      password: 654123

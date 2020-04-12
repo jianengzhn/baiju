@@ -59,3 +59,7 @@
 ### 码云特技
 
 1.
+
+## 标星统计
+
+[![标星统计](https://starchart.cc/jianengzhn/baiju.svg)](https://starchart.cc/jianengzhn/baiju)
