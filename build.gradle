@@ -31,8 +31,8 @@
 		 ver=[
 			 springBootVersion : '2.2.6.RELEASE',
 			 springCloudVersion : "Hoxton.SR3",
-			 springSecurityVersion : "5.3.1.RELEASE"
-
+			 springSecurityVersion : "5.3.1.RELEASE",
+			 springCloudAlibabaVersion : "2.2.0.RELEASE"
 		 ]
 		 /*其它相关变量的声明*/
 
@@ -153,6 +153,7 @@ subprojects { project ->
 	dependencyManagement {
 		imports {
 			mavenBom "org.springframework.cloud:spring-cloud-dependencies:${ver.springCloudVersion}"
+			mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${ver.springCloudAlibabaVersion}"
 		}
 	}
 
