@@ -1,0 +1,51 @@
+@startuml
+
+title 项目模块依赖图
+
+' 定义样式
+cloud {
+ rectangle "nacos配置\注册中心"  as s1 #OrangeRed
+}
+(公用配置文件\n模块) as s2 #PapayaWhip
+
+rectangle 父项目1 as s3 #GreenYellow
+rectangle 父项目2 as s4 #GreenYellow
+rectangle 父项目3 as s5 #GreenYellow
+rectangle 父项目4 as s6 #GreenYellow
+rectangle 子项目1 as s7 #Aquamarine
+rectangle 子项目2 as s8 #Aquamarine
+rectangle 子项目3 as s9 #Aquamarine
+rectangle 孙项目1 as s10 #Violet
+rectangle 孙项目2 as s11 #Violet
+
+' 连线关系
+
+s10 -d-> s7
+s10 -d-> s8
+s11 -d-> s7
+s11 -d-> s9
+
+' s7 -d->  s3
+s7 -d->  s4
+s7 -d->  s5
+s7 -d->  s6
+
+s8 -d-> s3
+s8 -d-> s4
+
+s9 -d-> s4
+s9 -d-> s5
+s9 -d-> s6
+
+s3 .d.|> s2
+s4 .d.|> s2
+s5 .d.|> s2
+s6 .d.|> s2
+s7 .d.|> s2
+s8 .d.|> s2
+s9 .d.|> s2
+s10 .d.|> s2
+s11 .d.|> s2
+s2 .d.|> s1
+
+@enduml
