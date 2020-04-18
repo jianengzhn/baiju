@@ -18,3 +18,5 @@ spring:
     user:
       name: user
       password: 654123
+  profiles:
+    active:

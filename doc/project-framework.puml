@@ -1,0 +1,84 @@
+@startuml
+
+'圆角rectangle黑边
+skinparam  rectangle{
+    RoundCorner 15
+    FontSize 20
+}
+skinparam databaseFontSize 15
+skinparam fileFontSize 20
+
+' agent为直角形状红边框，
+rectangle #white-Technology "终端显示层(view)" as view
+' rectangle #white-Technology "开放接口层(api)" as api
+rectangle "开放接口层(openapi)" as api {
+  frame openapi-lib as f1 {
+   component #white-Technology "接口定义openapi"
+  }
+  package openapi-boostrap as p1 {
+    component #white-Technology  接口实现openapiImpl
+  }
+}
+package bootstrap as p2 {
+rectangle #white-cyan "请求处理层(web)" as web
+}
+frame  sevice-lib as p3 {
+    rectangle #white-peachpuff "业务逻辑层(sevice)" as sevice
+    rectangle #white-pink "数据持久层(DAO)" as dao
+}
+frame manager-lib as p4 {
+    rectangle #white-pink "通用处理层(manager)" as manager
+}
+database  #white-silver "数  据  源" as ds
+file #white-silver "外部接口或第三方平台" as oa
+
+'连线
+view -d-> web :Query
+'api -d-> web:Query
+api -d-> sevice:Query
+web -d-> sevice :Query
+
+sevice -d-> dao:Query
+manager -d-> dao:Query
+sevice -d-> manager:Query
+dao -d-> ds:Query
+manager -d-> oa:Query
+
+'返回信息
+oa .u.|> manager:BO
+ds ~U~>> dao:DO
+dao ~u~>> manager:DO
+dao ~u~>> sevice:DO
+manager ~u~|> sevice:DTO
+
+sevice ~U~>> web:DO
+sevice ~u~|> api:DTO
+web =u=|> view :VO
+
+@enduml
+
+
+@startuml
+
+/'
+
+rectangle "Another rectangle" as a3
+rectangle "dddd" {
+ rectangle "Another rectangle" as a2
+ agent "ddd"
+}
+
+rectangle "Concept" {
+rectangle "Another rectangle" as a3
+
+}
+
+rectangle "dd" #green
+
+agent agnet #green  [
+    agnet
+    --
+    ddd
+]
+'/
+@enduml
