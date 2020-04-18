@@ -37,7 +37,7 @@
 
 参照阿里在开发规范，项目结构图如下：
 
-![项目结构图](https://raw.githubusercontent.com/jianengzhn/baiju/featuer-e0a1562-0413-frameowrk-develop/doc/project-framework.puml)
+![项目结构图](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/jianengzhn/baiju/featuer-e0a1562-0413-frameowrk-develop/doc/project-framework.puml)
 
 说明：
  1. 应用分层：

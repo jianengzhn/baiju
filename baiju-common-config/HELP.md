@@ -8,50 +8,7 @@
 
 以照阿里开发规范，在二方库或依赖模块里不增加配置项的原则，而在最终可执行项目包中进行配置。本项目只做了公共配置到其它项目中，详见下图：
 
-[项目模块依赖图]()
-
-```puml
-title 项目模块依赖图
-
-' 定义样式
-cloud {
- rectangle "nacos配置\注册中心"  as s1 #OrangeRed
-}
-(公用配置文件\n模块) as s2 #PapayaWhip
-
-rectangle 父项目1 as s3 #GreenYellow
-rectangle 父项目2 as s4 #GreenYellow
-rectangle 父项目3 as s5 #GreenYellow
-rectangle 父项目4 as s6 #GreenYellow
-rectangle 子项目1 as s7 #Aquamarine
-rectangle 子项目2 as s8 #Aquamarine
-rectangle 子项目3 as s9 #Aquamarine
-
-' 连线关系
-
-' s7 -d->  s3
-s7 -d->  s4
-s7 -d->  s5
-s7 -d->  s6
-
-s8 -d-> s3
-s8 -d-> s4
-
-s9 -d-> s4
-s9 -d-> s5
-s9 -d-> s6
-
-s3 .d.|> s2
-s4 .d.|> s2
-s5 .d.|> s2
-s6 .d.|> s2
-s7 .d.|> s2
-s8 .d.|> s2
-s9 .d.|> s2
-
-s2 .d.|> s1
-
-```
+![项目模块依赖图](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/jianengzhn/baiju/featuer-e0a1562-0413-frameowrk-develop/doc/modle-structure.puml)
 
 1. 项目支持二级打包组合方式。即子、父二级。
 2. 现假设这两级项目均可单独打包独立运行。
