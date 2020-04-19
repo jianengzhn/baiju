@@ -102,12 +102,10 @@
  
 4. 应用包名规划说明
  
-   1) 应用包根结点： com.eppear.baiju
-   
-   2) 后台管理： .backstage
-   
-   3) 业务通用处理： .backstage.menager
-   4) 业务处理： .backstage.sevice
+   1) 应用包根结点： com.eppear.baiju   
+   2) 后台管理： .backstage   
+   3) 业务通用处理： .backstage.manager
+   4) 业务处理： .backstage.service
    5) 开放接口实现： .backstage.openapi.imp
    6) 开放接口定义： .backstage.openapi
    7) 通用模块： .common

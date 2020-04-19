@@ -9,6 +9,6 @@
 
 rootProject.name = 'baiju'
 include 'baiju-common-config'
-include 'baiju-eureka-server'
+include 'baiju-cloud-eureka-server'
 
 
