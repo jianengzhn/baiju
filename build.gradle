@@ -91,13 +91,6 @@ configure(allprojects) { project ->
     }
     */
 
-/*	dependencyManagement {
-		imports {
-			mavenBom "org.springframework.cloud:spring-cloud-dependencies:${ver.springCloudVersion}"
-			//mavenBom "org.springframework.security:spring-security-bom:${springSecurityVersion}"
-		}
-	}*/
-
     // 相关连接
     ext.javadocLinks = [
 		"http://docs.oracle.com/javase/8/docs/api/",
@@ -138,9 +131,7 @@ configure(rootProject) {
         }
     }
 	/*由于根项目是空项目，无JAVA代码，而springBoot的Gradle插件默认是打可执行包，所以要关掉，否则在根项目执行打包会报错*/
-	bootJar{
-		enabled = false
-	}
+	bootJar.enabled = false
 }
 
 /* 所有子项目的专用配置*/

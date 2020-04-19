@@ -5,7 +5,7 @@ skinparam  rectangle{
     RoundCorner 15
     FontSize 20
 }
-skinparam databaseFontSize 15
+skinparam databaseFontSize 20
 skinparam fileFontSize 20
 
 ' agent为直角形状红边框，
@@ -35,7 +35,7 @@ file #white-silver "外部接口或第三方平台" as oa
 '连线
 view -d-> web :Query
 'api -d-> web:Query
-api -d-> sevice:Query
+api -d--> sevice:Query
 web -d-> sevice :Query
 
 sevice -d-> dao:Query
@@ -47,7 +47,7 @@ manager -d-> oa:Query
 '返回信息
 oa .u.|> manager:BO
 ds ~U~>> dao:DO
-dao ~u~>> manager:DO
+dao ~u~~>> manager:DO
 dao ~u~>> sevice:DO
 manager ~u~|> sevice:DTO
 
