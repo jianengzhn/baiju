@@ -12,7 +12,8 @@
 
 1. 使用Gradle做项目依赖与相建管理，把项目模块化拆分，构建脚本配置更简练、更方便；项目更易开发、易扩展。
 
-2. 以[Spring Boot](https://spring.io/projects/spring-boot#overview) 最新稳定版(2.2.6)为基础开发，[MyBatis](https://mybatis.io/) 为数据访问层，Spring Security Kerberos为权限授权层，Redis对常用数据进行缓存。
+2. 以[Spring Boot](https://spring.io/projects/spring-boot#overview) 最新稳定版(2.2.6)为基础开发，
+[MyBatis](https://mybatis.io/) 为数据访问层，Spring Security Kerberos为权限授权层，Redis对常用数据进行缓存。
 
 3. 前端页面，使用angular，主题使用[Ant Design of Angular](https://ng.ant.design/docs/introduce/zh)
 
