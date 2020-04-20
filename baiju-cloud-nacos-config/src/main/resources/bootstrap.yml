@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: example
+  cloud:
+    nacos:
+      config:
+        #配置中心启用开关
+        enabled: true
+        #配置服务器地址
+        server-addr: http://www.eppear.com:80/
+        # 指定配置的后缀，支持 properties、yaml、yml，默认为 properties
+        file-extension: properties
+        # Group：DEFAULT_GROUP
+        group: DEFAULT_GROUP

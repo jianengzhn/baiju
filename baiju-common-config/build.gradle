@@ -5,7 +5,7 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
 }
-archivesBaseName
+//archivesBaseName
 /*此项目为普通jar包，不为作可启动jar包*/
 jar.enabled = true
 bootJar.enabled = false

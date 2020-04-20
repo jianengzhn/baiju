@@ -10,5 +10,5 @@
 rootProject.name = 'baiju'
 include 'baiju-common-config'
 include 'baiju-cloud-eureka-server'
-
+include 'baiju-cloud-nacos-config'
 
