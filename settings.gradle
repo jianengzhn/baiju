@@ -8,6 +8,7 @@
  */
 
 rootProject.name = 'baiju'
+include 'baiju-boostrap'
 include 'baiju-common-config'
 include 'baiju-common-framework'
 include 'baiju-cloud-eureka-server'
