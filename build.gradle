@@ -63,7 +63,7 @@ configure(allprojects) { project ->
     sourceCompatibility = '1.8'
 
 	apply plugin:  'idea'
-	apply plugin:  'eclipse'
+	//apply plugin:  'eclipse'
 
     /*配置公用仓库，从下到上优先级升高*/
     // 由于全局参数已配置，项目中可以去掉,如未配置则要打开此处
@@ -140,6 +140,21 @@ subprojects { project ->
 	apply plugin:  'io.spring.dependency-management'
 	apply plugin:  'java'
 
+	configurations {
+		developmentOnly
+		runtimeClasspath {
+			extendsFrom developmentOnly
+		}
+	}
+
+	/*公共依赖*/
+	dependencies {
+		developmentOnly 'org.springframework.boot:spring-boot-devtools'
+		testImplementation('org.springframework.boot:spring-boot-starter-test') {
+			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+		}
+	}
+
 	/*声明版本仲裁器，子项目中可以省去版本号，由此模块自动匹配版本*/
 	dependencyManagement {
 		imports {
@@ -173,8 +188,9 @@ subprojects { project ->
  * 除 baiju-common-config 项目外，都要依赖它
  * 通过  it.name == ''的方式来指定子项目名称
  */
-configure(subprojects.findAll { it.name != 'baiju-common-config' }) {
+configure(subprojects.findAll { it.name != 'baiju-common-config' && it.name != 'baiju-cloud-nacos-config' }) {
 	dependencies {
 		implementation project(":baiju-common-config")
+		implementation project(":baiju-cloud-nacos-config")
 	}
 }
