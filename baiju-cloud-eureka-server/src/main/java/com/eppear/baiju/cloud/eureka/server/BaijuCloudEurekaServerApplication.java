@@ -12,10 +12,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 @SpringBootApplication
 @EnableEurekaServer
-public class CloudEurekaServerApplication {
+public class BaijuCloudEurekaServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CloudEurekaServerApplication.class, args);
+        SpringApplication.run(BaijuCloudEurekaServerApplication.class, args);
     }
 
     /**

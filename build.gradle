@@ -10,14 +10,14 @@
 	 /*自定义属性声明，如版本号*/
 	 ext {
 		 // 本应用的属性
-		 app=[
+		 app= [
 			 // 系统名称
 			 appName : '白驹中后台管理系统',
 			 // 系统版本
 			 appVersion : '0.0.1-SNAPSHOT',
 			 appDescribe : '基于SpringBoot的管理系统',
 			 appGroup : 'com.eppear'
-		 ]
+		 ] as LinkedHashMap
 		 // 相关链接
 		 link =[
 			 // 系统链接
@@ -26,14 +26,14 @@
 			 // 源码地址
 			 linkScmUrl : 'https://github.com/jianengzhn/baiju',
 			 linkIssue : 'https://github.com/jianengzhn/baiju/issues'
-		 ]
+		 ] as LinkedHashMap
 		 /*相关依赖的版本号声明*/
-		 ver=[
+		 ver= [
 			 springBootVersion : '2.2.6.RELEASE',
 			 springCloudVersion : "Hoxton.SR3",
 			 springSecurityVersion : "5.3.1.RELEASE",
 			 springCloudAlibabaVersion : "2.2.0.RELEASE"
-		 ]
+		 ] as LinkedHashMap
 		 /*其它相关变量的声明*/
 
 	 }
@@ -150,6 +150,8 @@ subprojects { project ->
 	/*公共依赖*/
 	dependencies {
 		developmentOnly 'org.springframework.boot:spring-boot-devtools'
+		compileOnly 'org.projectlombok:lombok'
+		annotationProcessor 'org.projectlombok:lombok'
 		testImplementation('org.springframework.boot:spring-boot-starter-test') {
 			exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 		}

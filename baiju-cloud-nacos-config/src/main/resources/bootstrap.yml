@@ -1,7 +1,7 @@
-server:
-  port: 8088
-
 spring:
+  profiles:
+    # 默认为开发环境
+    active: dev
 #  application:
 #    name: example
   cloud:
