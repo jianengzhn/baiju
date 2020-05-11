@@ -8,6 +8,7 @@ class BaijuBoostrapApplicationTests {
 
     @Test
     void contextLoads() {
+        System.out.println("测试启动");
     }
 
 }
