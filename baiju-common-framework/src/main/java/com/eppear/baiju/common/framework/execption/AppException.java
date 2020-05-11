@@ -20,14 +20,23 @@ public class AppException extends RuntimeException {
      * 自定定义异常说明
      */
     private final String message;
+    /**
+     * 自定义枚举
+     */
+    private final BaseResultCode baseResultCode;
 
     public AppException(BaseResultCode baseResultCode){
         super(baseResultCode.getMessage());
         this.code = baseResultCode.getCode();
         this.message = baseResultCode.getMessage();
-        Throwable a = new Throwable();
-
+        this.baseResultCode = baseResultCode;
     }
+
+    /*public AppException(Integer code, String message, BaseResultCode baseResultCode){
+        this.code = code;
+        this.message = message;
+        this.baseResultCode = baseResultCode;
+    }*/
 
     /**
      * 获取异常代码
@@ -43,5 +52,13 @@ public class AppException extends RuntimeException {
     @Override
     public String getMessage(){
         return this.message;
+    }
+
+    /**
+     * 获取异常信息枚举
+     * @return
+     */
+    public BaseResultCode getBaseResultCode(){
+        return this.baseResultCode;
     }
 }

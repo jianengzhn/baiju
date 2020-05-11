@@ -109,6 +109,13 @@ configure(allprojects) { project ->
 		"http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/"
 	] as String[]
 
+	//下载源码配置
+	idea{
+		module{
+			downloadSources = true
+			downloadJavadoc = true
+		}
+	}
 }
 
 // 配置根项目属性

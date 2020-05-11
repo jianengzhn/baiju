@@ -18,7 +18,7 @@ import org.springframework.session.security.web.authentication.SpringSessionReme
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
-     *  与springSession整合记住我功能
+     * 与springSession整合记住我功能
      * @return
      */
     @Bean
@@ -32,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //配置认证方式等
+        // 配置认证方式等
         super.configure(auth);
     }
 
