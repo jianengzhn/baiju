@@ -1,7 +1,8 @@
 #日志级别
 logging:
   level:
-    root: debug
+    com:
+      eppear: debug
 
 spring:
   #redis地址、端口、密码
@@ -17,3 +18,8 @@ spring:
         max-idle: 8
         min-idle: 1
     database: 0
+
+  security:
+    user:
+      password: 123
+      name: user
