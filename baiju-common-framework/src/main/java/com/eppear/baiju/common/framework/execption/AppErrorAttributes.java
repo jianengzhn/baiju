@@ -20,7 +20,7 @@ import java.util.Map;
 public class AppErrorAttributes extends DefaultErrorAttributes {
 
     /**
-     * 定义异常信息，取出响应码
+     * 定义异常信息，取出响应码。
      * @param webRequest
      * @param includeStackTrace
      * @return
@@ -29,8 +29,8 @@ public class AppErrorAttributes extends DefaultErrorAttributes {
     public Map<String, Object> getErrorAttributes(WebRequest webRequest, boolean includeStackTrace) {
 
         Map<String, Object> map = super.getErrorAttributes(webRequest, includeStackTrace);
-        map.put("parameterData","");
-        map.put("data",null);
+        map.put("parameterData", "");
+        map.put("data", null);
 
         Throwable error = getError(webRequest);
         if (error instanceof AppException) {

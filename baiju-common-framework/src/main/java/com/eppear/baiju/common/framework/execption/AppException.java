@@ -3,7 +3,7 @@ package com.eppear.baiju.common.framework.execption;
 import com.eppear.baiju.common.framework.constant.BaseResultCode;
 
 /**
- * 异常基类<p>
+ * 异常基类.<p>
  *     所有自定义异常都应为其子类 Abstract
  *
  * @author jianf
@@ -19,16 +19,20 @@ public class AppException extends RuntimeException {
     /**
      * 自定定义异常说明
      */
-    private final String message;
+    private final String description;
     /**
      * 自定义枚举
      */
     private final BaseResultCode baseResultCode;
 
-    public AppException(BaseResultCode baseResultCode){
+    /**
+     * 构造方法
+     * @param baseResultCode 异常信息枚举类
+     */
+    public AppException(final BaseResultCode baseResultCode) {
         super(baseResultCode.getMessage());
         this.code = baseResultCode.getCode();
-        this.message = baseResultCode.getMessage();
+        this.description = baseResultCode.getMessage();
         this.baseResultCode = baseResultCode;
     }
 
@@ -39,26 +43,25 @@ public class AppException extends RuntimeException {
     }*/
 
     /**
-     * 获取异常代码
-     * @return
+     * 获取异常代码.
+     * @return 异常代码
      */
     public Integer getCode() {
         return this.code;
     }
     /**
-     * 获取异常消息
-     * @return
+     * 获取异常消息.
+     * @return 异常消息
      */
-    @Override
-    public String getMessage(){
-        return this.message;
+    public String getDescription() {
+        return this.description;
     }
 
     /**
-     * 获取异常信息枚举
-     * @return
+     * 获取异常信息枚举.
+     * @return 信息枚举
      */
-    public BaseResultCode getBaseResultCode(){
+    public BaseResultCode getBaseResultCode() {
         return this.baseResultCode;
     }
 }

@@ -18,8 +18,12 @@ spring:
         max-idle: 8
         min-idle: 1
     database: 0
-
   security:
     user:
       password: 123
-      name: user
+      name: admin
+#  解决json乱码问题
+  http:
+    encoding:
+      charset: utf-8
+      force: true

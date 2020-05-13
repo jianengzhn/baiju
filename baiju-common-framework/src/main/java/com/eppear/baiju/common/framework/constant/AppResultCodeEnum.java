@@ -20,7 +20,7 @@ public enum AppResultCodeEnum implements BaseResultCode {
     /**
      * 系统异常，即业务代码以外的，无法预知的异常
      */
-    SYS_EXCEPTION(990,"系统内部异常"),
+    SYS_EXCEPTION(990, "系统内部异常"),
     /** 默认失败 */
     COMMON_FAIL(999, "操作失败"),
 

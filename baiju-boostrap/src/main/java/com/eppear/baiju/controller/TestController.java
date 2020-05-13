@@ -18,14 +18,28 @@ public class TestController {
 
     @RequestMapping("1")
     public String test1() {
+        int a = 0;
+        int b = 1 / 0;
         throw new AppException(AppResultCodeEnum.PARAM_NOT_COMPLETE);
         //return "";
     }
 
     @ResponseBody
     @RequestMapping("2")
-    public Response test2(){
+    public Response<Object> test2() {
         throw new AppException(AppResultCodeEnum.PARAM_NOT_VALID);
         //return Response.fail(AppResultCodeEnum.NO_PERMISSION);
+    }
+
+    @ResponseBody
+    @RequestMapping("3")
+    public Response test3() {
+        return Response.fail();
+    }
+
+    @ResponseBody
+    @RequestMapping("4")
+    public Response<Object> test4() {
+        return Response.success();
     }
 }
