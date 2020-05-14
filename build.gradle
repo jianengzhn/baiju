@@ -190,7 +190,7 @@ subprojects { project ->
 
 	/*配置可以执行Jar包的版本属性信息*/
 	bootJar{
-		println "执行了manifest配置"
+		// println "执行了manifest配置"
 		manifest = project.manifest {
 			from sharedManifest
 		}
