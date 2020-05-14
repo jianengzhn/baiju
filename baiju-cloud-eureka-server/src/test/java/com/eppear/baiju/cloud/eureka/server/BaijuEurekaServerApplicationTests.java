@@ -1,4 +1,4 @@
-package com.eppear.baiju.eureka.server;
+package com.eppear.baiju.cloud.eureka.server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
