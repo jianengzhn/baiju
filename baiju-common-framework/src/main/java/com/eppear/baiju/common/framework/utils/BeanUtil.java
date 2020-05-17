@@ -28,7 +28,7 @@ public class BeanUtil {
                 emptyNames.add(pd.getName());
             }
         }
-        if(StringUtils.isNotNull(properNames)) {
+        if(StrUtils.isNotNull(properNames)) {
             Arrays.stream(properNames.clone()).forEach(e -> {
                 emptyNames.add(e);
             });
@@ -48,8 +48,8 @@ public class BeanUtil {
 
     /**
      * 非空拷贝
-     * @param source
-     * @param target
+     * @param source 源对像
+     * @param target 目标对像
      * @param properNames 无需要复制的属性
      */
     public static void copyNotNullBean(Object source, Object target,String... properNames) {

@@ -2,6 +2,7 @@ package com.eppear.baiju.common.framework.utils;
 
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.Snowflake;
+import cn.hutool.core.util.StrUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.management.ManagementFactory;
@@ -18,14 +19,17 @@ import java.util.regex.Pattern;
  * @author jianf
  * @date 2020年05月15 17:28
  */
-public class StringUtils extends org.apache.commons.lang3.StringUtils {
+public class StrUtils extends StrUtil {
 
     private static final char SEPARATOR = '_';
-    private  static final String strData ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    private static final String STR_DATA ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    private static final String UNKNOWN ="unknown";
+    private static final Pattern NUMBER_PATTERN = Pattern.compile("[0-9]*");
+
     /**
-     * 是否包含字符串
+     * 是否包含字指定符串
      *
-     * @param str  验证字符串
+     * @param str  待验证字符串
      * @param strs 字符串组
      * @return 包含返回true
      */
@@ -44,8 +48,8 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
      * 驼峰命名法工具
      *
      * @return toCamelCase(" hello_world ") == "helloWorld"
-     * toCapitalizeCamelCase("hello_world") == "HelloWorld"
-     * toUnderScoreCase("helloWorld") = "hello_world"
+     * <p>toCapitalizeCamelCase("hello_world") == "HelloWorld"
+     * <p>toUnderScoreCase("helloWorld") = "hello_world"
      */
     public static String toCamelCase(String s) {
         if (s == null) {
@@ -130,15 +134,15 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
      * @param request
      * @return
      */
-    public static String getIP(HttpServletRequest request) {
+    public static String getIp(HttpServletRequest request) {
         String ip = request.getHeader("x-forwarded-for");
-        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+        if(ip == null || ip.length() == 0 || UNKNOWN.equalsIgnoreCase(ip)) {
             ip = request.getHeader("Proxy-Client-IP");
         }
-        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+        if(ip == null || ip.length() == 0 || UNKNOWN.equalsIgnoreCase(ip)) {
             ip = request.getHeader("WL-Proxy-Client-IP");
         }
-        if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+        if(ip == null || ip.length() == 0 || UNKNOWN.equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
         }
         return "0:0:0:0:0:0:0:1".equals(ip)?"127.0.0.1":ip;
@@ -159,7 +163,6 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
         return weekDays[w];
     }
 
-
     /**
      * 获取字符串自增长值
      * describe:
@@ -171,12 +174,11 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
         String beforeStr = "";
         String afterStr = "";
         for (int i = str.length(); i > 0; i--) {
-            if (isNumeric(str.substring(i - 1, i)) && b)
+            if (isNumeric(str.substring(i - 1, i)) && b) {
                 afterStr = str.substring(i - 1, i) + afterStr;
-            else {
+            }else {
                 b = false;
                 beforeStr = str.substring(i - 1, i) + beforeStr;
-
             }
         }
         Long num = (Long.valueOf("1" + afterStr) + 1);
@@ -186,8 +188,7 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     }
 
     public static boolean isNumeric(String str) {
-        Pattern pattern = Pattern.compile("[0-9]*");
-        return pattern.matcher(str).matches();
+        return NUMBER_PATTERN.matcher(str).matches();
     }
 
     public static void main(String[] args) {
@@ -219,14 +220,12 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     }
 
     public static String makeNo(String prefix,int randomLen){
-        RuntimeMXBean runtimeMXBean = ManagementFactory.getRuntimeMXBean();
-        String num=String.valueOf(runtimeMXBean.getName().split("@")[0]);
+        RuntimeMXBean rtmb = ManagementFactory.getRuntimeMXBean();
+        String num=String.valueOf(rtmb.getName().split("@")[0]);
         num=num.substring(num.length()-2,num.length());
         prefix += DateUtil.format(new Date(),"yyMMddHHmmssSSS");
-        String code = prefix +num+ StringUtils.randomNum(randomLen);
-        return code;
+        return prefix +num+ StrUtils.randomNum(randomLen);
     }
-
 
     /**
      * 判断是否传是否为空
@@ -280,14 +279,14 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     /**
      * 生成随机字符串，由大小写字母和数字组成
      * @param length 字符串长度
-     * @return
+     * @return 字符串
      */
     public static String randomStr(Integer length){
         Random random=new Random();
         StringBuffer sb=new StringBuffer();
         for(int i=0;i<length;i++){
             int number=random.nextInt(62);
-            sb.append(strData.charAt(number));
+            sb.append(STR_DATA.charAt(number));
         }
         return sb.toString();
     }
