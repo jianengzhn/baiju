@@ -1,6 +1,9 @@
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.apache.commons:commons-lang3'
+    //工具类，文档 https://www.hutool.cn/
+    implementation "cn.hutool:hutool-all:${ver.hutoolVersion}"
 }
 
 /*此项目为普通jar包，不为作可启动jar包*/

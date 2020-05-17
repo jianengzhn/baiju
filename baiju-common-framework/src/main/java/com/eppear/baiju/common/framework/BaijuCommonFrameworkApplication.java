@@ -3,6 +3,9 @@ package com.eppear.baiju.common.framework;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author jianf
+ */
 @SpringBootApplication
 public class BaijuCommonFrameworkApplication {
 

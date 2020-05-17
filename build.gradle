@@ -32,7 +32,9 @@
 			 springBootVersion : '2.2.6.RELEASE',
 			 springCloudVersion : "Hoxton.SR3",
 			 springSecurityVersion : "5.3.1.RELEASE",
-			 springCloudAlibabaVersion : "2.2.0.RELEASE"
+			 springCloudAlibabaVersion : "2.2.0.RELEASE",
+			 commonLang3Version :"3.9",
+			 hutoolVersion : "5.3.5"
 		 ] as LinkedHashMap
 		 /*其它相关变量的声明*/
 
@@ -173,6 +175,10 @@ subprojects { project ->
 		imports {
 			mavenBom "org.springframework.cloud:spring-cloud-dependencies:${ver.springCloudVersion}"
 			mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${ver.springCloudAlibabaVersion}"
+			/* 引入 commons-lang3*/
+			mavenBom "org.apache.commons:commons-lang3:${ver.commonLang3Version}"
+			/* 引入hutool工具类 文档 https://www.hutool.cn/ */
+			//mavenBom "cn.hutool:hutool-all:${ver.hutoolVersion}"
 		}
 	}
 
