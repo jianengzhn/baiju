@@ -3,6 +3,7 @@ package com.eppear.baiju.common.framework;
 import cn.hutool.log.Log;
 import cn.hutool.log.LogFactory;
 import com.eppear.baiju.common.framework.common.Signature;
+import com.eppear.baiju.common.framework.constant.ConfigConstants;
 import com.eppear.baiju.common.framework.utils.SignUtil;
 import com.eppear.baiju.common.framework.utils.StrUtils;
 import org.junit.jupiter.api.Test;
@@ -34,6 +35,13 @@ class CommonFrameworkTests {
         String s = SignUtil.generateSign(sgt).getSignature();
 
         System.out.println(s);
+
+    }
+
+    @Test
+    public void configTest(){
+        log.debug("WEBSOCKET_SIGN_TIMEOUT==> {}", ConfigConstants.WEBSOCKET_SIGN_TIMEOUT);
+        assert  ConfigConstants.WEBSOCKET_SIGN_TIMEOUT.equals("60");
 
     }
 }

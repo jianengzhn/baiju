@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "websocket.sign.timeout",
+      "type": "java.lang.String",
+      "description": "websocket连接验证的超时间，单位为秒，默认值为：50"
+    }
+  ] }
