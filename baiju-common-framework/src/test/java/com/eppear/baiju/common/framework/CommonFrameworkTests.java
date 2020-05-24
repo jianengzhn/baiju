@@ -1,5 +1,6 @@
 package com.eppear.baiju.common.framework;
 
+import cn.hutool.core.lang.Snowflake;
 import cn.hutool.log.Log;
 import cn.hutool.log.LogFactory;
 import com.eppear.baiju.common.framework.common.Signature;
@@ -41,7 +42,9 @@ class CommonFrameworkTests {
     @Test
     public void configTest(){
         log.debug("WEBSOCKET_SIGN_TIMEOUT==> {}", ConfigConstants.WEBSOCKET_SIGN_TIMEOUT);
-        assert  ConfigConstants.WEBSOCKET_SIGN_TIMEOUT.equals("60");
 
+        Snowflake snowflake=new Snowflake(1,1);
+        log.debug("snowflake -  {}",snowflake.nextId());
+        assert  ConfigConstants.WEBSOCKET_SIGN_TIMEOUT.equals("60");
     }
 }
