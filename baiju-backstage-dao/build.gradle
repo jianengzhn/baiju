@@ -1,0 +1,6 @@
+dependencies {
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.2'
+    runtimeOnly 'mysql:mysql-connector-java'
+}
+jar.enabled = true
+bootJar.enabled = false

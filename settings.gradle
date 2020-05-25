@@ -13,4 +13,5 @@ include 'baiju-common-config'
 include 'baiju-common-framework'
 include 'baiju-cloud-eureka-server'
 include 'baiju-cloud-nacos-config'
-
+include 'baiju-backstage-service'
+include 'baiju-backstage-dao'
