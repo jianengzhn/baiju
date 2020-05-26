@@ -23,6 +23,7 @@ class CommonFrameworkTests {
         log.debug(" === StringUtils测试结果！");
         log.debug("randomNum = {}", StrUtils.randomNum(3));
         log.debug("randomStr = {}", StrUtils.randomStr(5));
+        log.debug("isNotEmpty = {}", StrUtils.isNotEmpty("ddd"));
     }
 
     @Test

@@ -14,7 +14,7 @@ import java.util.Random;
 import java.util.regex.Pattern;
 
 /**
- * TODO
+ * 字符串工具类
  *
  * @author jianf
  * @date 2020年05月15 17:28
