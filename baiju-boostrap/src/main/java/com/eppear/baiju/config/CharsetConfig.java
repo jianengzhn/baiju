@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets;
  * @date 2020-05-13 23:23:03
  */
 @Configuration
-public class CharsetConfiguration {
+public class CharsetConfig {
     @Bean
     public HttpMessageConverter<String> responseBodyConverter() {
         return new StringHttpMessageConverter(StandardCharsets.UTF_8);

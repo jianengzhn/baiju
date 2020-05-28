@@ -15,7 +15,6 @@ public class BaijuBoostrapApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BaijuBoostrapApplication.class, args);
-        log.debug("主程序启动了");
+        log.debug("主程序启动完成");
     }
-
 }
