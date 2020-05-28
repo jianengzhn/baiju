@@ -14,9 +14,7 @@ import java.io.IOException;
  * @author zhangjf
  * @date 2020-05-26 22:05:01
  */
-@Component
 @Slf4j
-@WebFilter(filterName = "AppFilter", urlPatterns = "/**")
 public class AppFilter implements Filter {
 
     private static final String UNKNOWN_IP = "unknown";
@@ -49,14 +47,12 @@ public class AppFilter implements Filter {
      * @return request发起客户端的IP地址
      */
     private String getIp(HttpServletRequest request) {
+
         if (request == null) {
             return "0.0.0.0";
         }
-
         String xip = request.getHeader("X-Real-IP");
         String xFor = request.getHeader("X-Forwarded-For");
-
-
         if (StrUtils.isNotEmpty(xFor) && !UNKNOWN_IP.equalsIgnoreCase(xFor)) {
             //多次反向代理后会有多个ip值，第一个ip才是真实ip
             int index = xFor.indexOf(",");
@@ -66,7 +62,7 @@ public class AppFilter implements Filter {
                 return xFor;
             }
         }
-        String a = StrUtils.toCamelCase("dadfas");
+
         xFor = xip;
         if (StrUtils.isNotEmpty(xFor) && !UNKNOWN_IP.equalsIgnoreCase(xFor)) {
             return xFor;

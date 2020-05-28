@@ -9,7 +9,6 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
  * @author zjf
  */
 @Slf4j
-@ServletComponentScan
 @SpringBootApplication
 public class BaijuBoostrapApplication {
 
