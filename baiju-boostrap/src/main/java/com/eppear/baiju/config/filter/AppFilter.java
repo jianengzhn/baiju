@@ -1,4 +1,4 @@
-package com.eppear.baiju.filter;
+package com.eppear.baiju.config.filter;
 
 import com.eppear.baiju.common.framework.utils.StrUtils;
 import lombok.extern.slf4j.Slf4j;

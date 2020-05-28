@@ -5,10 +5,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class BaijuBoostrapApplicationTests {
-
     @Test
     void contextLoads() {
-        System.out.println("测试启动");
+        System.out.println("测试启动:%5{}|");
+
     }
 
 }

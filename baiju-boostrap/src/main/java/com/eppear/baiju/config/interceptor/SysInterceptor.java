@@ -1,4 +1,4 @@
-package com.eppear.baiju.interceptor;
+package com.eppear.baiju.config.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;

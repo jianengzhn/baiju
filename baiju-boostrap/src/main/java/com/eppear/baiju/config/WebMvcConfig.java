@@ -1,6 +1,6 @@
 package com.eppear.baiju.config;
 
-import com.eppear.baiju.interceptor.SysInterceptor;
+import com.eppear.baiju.config.interceptor.SysInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
