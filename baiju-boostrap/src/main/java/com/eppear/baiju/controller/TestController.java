@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 测试类
  * @author zjf
@@ -17,7 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TestController {
 
     @RequestMapping("1")
-    public String test1() {
+    public String test1(HttpServletRequest req ) {
+        req.getSession().setAttribute("test1","098hjk");
         int a = 0;
         int b = 1 / 0;
         throw new AppException(AppResultCodeEnum.PARAM_NOT_COMPLETE);
