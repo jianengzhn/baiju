@@ -1,5 +1,6 @@
 dependencies {
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.2'
+    implementation "tk.mybatis:mapper-spring-boot-starter:${ver.tkMaybatisVersion}"
     runtimeOnly 'mysql:mysql-connector-java'
 }
 jar.enabled = true
