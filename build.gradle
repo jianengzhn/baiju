@@ -35,10 +35,15 @@
 			 springCloudAlibabaVersion : "2.2.0.RELEASE",
 			 commonLang3Version :"3.9",
 			 hutoolVersion : "5.3.5",
-			 tkMaybatisVersion : '2.1.5'
+			 tkMaybatisVersion : '2.1.5',
+			 druidVersion : '1.1.22',
+			 mybatisGenVersion : '1.4'
 		 ] as LinkedHashMap
 		 /*其它相关变量的声明*/
 
+	 }
+	 dependencies {
+		 classpath "gradle.plugin.com.arenagod.gradle:mybatis-generator-plugin:${ver.mybatisGenVersion}"
 	 }
  }
 
@@ -46,6 +51,7 @@
 plugins {
     id 'org.springframework.boot' version '2.2.6.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id "com.arenagod.gradle.MybatisGenerator" version "1.4"
     id 'java'
     id 'idea'
     //id 'eclipse'
@@ -149,6 +155,7 @@ subprojects { project ->
 	apply plugin:  'org.springframework.boot'
 	apply plugin:  'io.spring.dependency-management'
 	apply plugin:  'java'
+
 
 	configurations {
 		developmentOnly
