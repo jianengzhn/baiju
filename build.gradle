@@ -51,7 +51,6 @@
 plugins {
     id 'org.springframework.boot' version '2.2.6.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
-	id "com.arenagod.gradle.MybatisGenerator" version "1.4"
     id 'java'
     id 'idea'
     //id 'eclipse'
@@ -141,7 +140,7 @@ configure(rootProject) {
         description= "查看仓库配置"
         doLast{
             println "  仓库列表为："
-            repositories.each{
+			repositories.each{
                 println "     ${it.name} - ${it.url}"
             }            
         }
@@ -188,8 +187,6 @@ subprojects { project ->
 			mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${ver.springCloudAlibabaVersion}"
 			/* 引入 commons-lang3*/
 			mavenBom "org.apache.commons:commons-lang3:${ver.commonLang3Version}"
-			/* 引入hutool工具类 文档 https://www.hutool.cn/ */
-			//mavenBom "cn.hutool:hutool-all:${ver.hutoolVersion}"
 		}
 	}
 
