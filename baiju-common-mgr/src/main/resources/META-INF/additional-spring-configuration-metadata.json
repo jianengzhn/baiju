@@ -1,0 +1,28 @@
+{
+  "properties": [
+    {
+      "name": "mybatis.generator.model.package",
+      "type": "java.lang.String",
+      "description": "定义Java模型生成器包位置."
+    },
+    {
+      "name": "mybaits.generator.project",
+      "type": "java.lang.String",
+      "description": "目标项目，指定一个存在的目录下，生成的内容会放到指定目录中，如果目录不存在，MBG不会自动建目录，可以定义相对路径."
+    },
+    {
+      "name": "mybatis.generator.client.package",
+      "type": "java.lang.String",
+      "description": "生成Dao类存放位置,mapper接口生成的包位置."
+    },
+    {
+      "name": "mybatis.generator.sqlmap.package",
+      "type": "java.lang.String",
+      "description": "生成sqlmap文件（.XML）存放包位置."
+    },
+    {
+      "name": "mybatis.generator.sqlmap.project",
+      "type": "java.lang.String",
+      "description": "生成sqlmap文件（.XML）存放的项目目录."
+    }
+  ] }
