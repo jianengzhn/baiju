@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * 基于Mymatis Generator的持久层代码自动生成执行类
  * @author zjf
  */
 @SpringBootApplication
@@ -20,20 +20,24 @@ import java.util.List;
 public class BaijuCommonMgrApplication {
 
     public static void main(String[] args) throws Exception {
-        List<String> warnings = new ArrayList<String>();
 
-        boolean overwrite = true;
-        File configFile = new File("baiju-common-mgr/src/main/resources/mybatis/generatorConfig.xml");
+        // 是否覆盖原文件，如果否则生成重命名的文件
+        boolean overwrite =true;
+        // 生成过程中的相关信息
+        List<String> warnings = new ArrayList<String>();
+        // 配置文件位置
+        String pathName = "baiju-common-mgr/src/main/resources/mybatis/generatorConfig.xml";
+
+        File configFile = new File(pathName);
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(configFile);
-
         DefaultShellCallback callback = new DefaultShellCallback(overwrite);
         MyBatisGenerator myBatisGenerator =  new MyBatisGenerator(config, callback, warnings);
         myBatisGenerator.generate(null);
 
         log.info("代码生成完成，过程信息有:");
-        for(int i=0;i<warnings.size();i++){
-            log.info(warnings.get(i));
+        for (String warning : warnings) {
+            log.info(warning);
         }
     }
 
