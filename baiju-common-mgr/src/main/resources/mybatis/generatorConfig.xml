@@ -22,6 +22,8 @@
                         connectionURL="${spring.datasource.url}"
                         userId="${spring.datasource.username}"
                         password="${spring.datasource.password}">
+            <!-- 配置此属性，使生成范围基于当前数据下-->
+            <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
 
         <!-- java模型创建器，是必须要的元素
@@ -51,7 +53,7 @@
         <!-- 配置表信息 -->
         <!-- schema即为数据库名 tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample
             是否生成 example类 -->
-        <table tableName="t_sys_user" delimitAllColumns="">
+        <table tableName="%" delimitAllColumns="">
             <generatedKey column="id" sqlStatement="Mysql" identity="true" />
             <!--表名的前缀去掉-->
             <domainObjectRenamingRule searchString="^T" replaceString="" />

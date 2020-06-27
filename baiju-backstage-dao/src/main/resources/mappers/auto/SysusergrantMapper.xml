@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eppear.baiju.backstage.dao.mapper.auto.SysusergrantMapper">
+  <resultMap id="BaseResultMap" type="com.eppear.baiju.backstage.dao.model.auto.Sysusergrant">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="USER_ID" jdbcType="INTEGER" property="userId" />
+    <result column="ROLE_ID" jdbcType="INTEGER" property="roleId" />
+    <result column="PROXY_FLAG" jdbcType="CHAR" property="proxyFlag" />
+    <result column="PROXY_ID" jdbcType="INTEGER" property="proxyId" />
+    <result column="FLAG" jdbcType="VARCHAR" property="flag" />
+    <result column="OPER_ID" jdbcType="INTEGER" property="operId" />
+    <result column="OPER_TIME" jdbcType="TIMESTAMP" property="operTime" />
+  </resultMap>
+</mapper>

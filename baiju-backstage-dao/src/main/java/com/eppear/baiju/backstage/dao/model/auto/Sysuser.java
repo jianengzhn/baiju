@@ -56,6 +56,30 @@ public class Sysuser {
     private String status;
 
     /**
+     * 账号是否可用
+     */
+    @Column(name = "ENABLED")
+    private Integer enabled;
+
+    /**
+     * 账号是否过期
+     */
+    @Column(name = "ACCT_NON_EXP")
+    private Integer acctNonExp;
+
+    /**
+     * 密码是否过期
+     */
+    @Column(name = "PWD__NON_EXP")
+    private Integer pwdNonExp;
+
+    /**
+     * 账号是否锁定
+     */
+    @Column(name = "ACCT_NON_LOCKED")
+    private Integer acctNonLocked;
+
+    /**
      * 系统特定角，色管理员：1，普通用户：2
      */
     @Column(name = "ROLE")
@@ -227,6 +251,78 @@ public class Sysuser {
      */
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    /**
+     * 获取账号是否可用
+     *
+     * @return ENABLED - 账号是否可用
+     */
+    public Integer getEnabled() {
+        return enabled;
+    }
+
+    /**
+     * 设置账号是否可用
+     *
+     * @param enabled 账号是否可用
+     */
+    public void setEnabled(Integer enabled) {
+        this.enabled = enabled;
+    }
+
+    /**
+     * 获取账号是否过期
+     *
+     * @return ACCT_NON_EXP - 账号是否过期
+     */
+    public Integer getAcctNonExp() {
+        return acctNonExp;
+    }
+
+    /**
+     * 设置账号是否过期
+     *
+     * @param acctNonExp 账号是否过期
+     */
+    public void setAcctNonExp(Integer acctNonExp) {
+        this.acctNonExp = acctNonExp;
+    }
+
+    /**
+     * 获取密码是否过期
+     *
+     * @return PWD__NON_EXP - 密码是否过期
+     */
+    public Integer getPwdNonExp() {
+        return pwdNonExp;
+    }
+
+    /**
+     * 设置密码是否过期
+     *
+     * @param pwdNonExp 密码是否过期
+     */
+    public void setPwdNonExp(Integer pwdNonExp) {
+        this.pwdNonExp = pwdNonExp;
+    }
+
+    /**
+     * 获取账号是否锁定
+     *
+     * @return ACCT_NON_LOCKED - 账号是否锁定
+     */
+    public Integer getAcctNonLocked() {
+        return acctNonLocked;
+    }
+
+    /**
+     * 设置账号是否锁定
+     *
+     * @param acctNonLocked 账号是否锁定
+     */
+    public void setAcctNonLocked(Integer acctNonLocked) {
+        this.acctNonLocked = acctNonLocked;
     }
 
     /**

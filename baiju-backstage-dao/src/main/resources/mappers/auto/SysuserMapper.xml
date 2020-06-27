@@ -13,6 +13,10 @@
     <result column="EMAIL" jdbcType="VARCHAR" property="email" />
     <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
     <result column="STATUS" jdbcType="CHAR" property="status" />
+    <result column="ENABLED" jdbcType="INTEGER" property="enabled" />
+    <result column="ACCT_NON_EXP" jdbcType="INTEGER" property="acctNonExp" />
+    <result column="PWD__NON_EXP" jdbcType="INTEGER" property="pwdNonExp" />
+    <result column="ACCT_NON_LOCKED" jdbcType="INTEGER" property="acctNonLocked" />
     <result column="ROLE" jdbcType="INTEGER" property="role" />
     <result column="CREATOR_ID" jdbcType="INTEGER" property="creatorId" />
     <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />

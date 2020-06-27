@@ -1,5 +1,5 @@
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 }
 /*此项目为普通jar包，不为作可启动jar包*/
 jar.enabled = true
