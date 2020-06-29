@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eppear.baiju.backstage.dao.mapper.system.SysAuthorizationDao">
+	<resultMap id="SysmanuResultMap" type="com.eppear.baiju.backstage.dao.model.auto.SysMenu">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="UP_ID" jdbcType="INTEGER" property="upId" />
+		<result column="NAME" jdbcType="VARCHAR" property="name" />
+		<result column="ICON" jdbcType="VARCHAR" property="icon" />
+		<result column="URL" jdbcType="VARCHAR" property="url" />
+		<result column="IS_LEAF" jdbcType="CHAR" property="isLeaf" />
+		<result column="ORDER_COL" jdbcType="INTEGER" property="orderCol" />
+		<result column="DEL_FLAG" jdbcType="CHAR" property="delFlag" />
+		<result column="PRE_COL1" jdbcType="VARCHAR" property="preCol1" />
+		<result column="PRE_COL2" jdbcType="VARCHAR" property="preCol2" />
+	</resultMap>
+
+	<resultMap id="SysAuthorizationResultMap" type="com.eppear.baiju.backstage.dao.model.system.SysAuthorization">
+		<id column="ID" jdbcType="INTEGER" property="id" />
+		<result column="UP_ID" jdbcType="INTEGER" property="upId" />
+		<result column="NAME" jdbcType="VARCHAR" property="name" />
+		<result column="ICON" jdbcType="VARCHAR" property="icon" />
+		<result column="URL" jdbcType="VARCHAR" property="url" />
+		<result column="IS_LEAF" jdbcType="CHAR" property="isLeaf" />
+		<result column="ORDER_COL" jdbcType="INTEGER" property="orderCol" />
+		<result column="DEL_FLAG" jdbcType="CHAR" property="delFlag" />
+		<result column="PRE_COL1" jdbcType="VARCHAR" property="preCol1" />
+		<result column="PRE_COL2" jdbcType="VARCHAR" property="preCol2" />
+	</resultMap>
+
+    <!-- 查询是否是系统管理员 -->
+    <select id="getSaFlag" parameterType="Integer" resultType="Integer">
+		SELECT COUNT(1) SA_FLAG
+		  FROM t_sys_user_grant TSUG
+		 WHERE EXISTS (SELECT 1
+		          FROM t_sys_role_spec TSRS, t_sys_role_spec_bind TSRSB
+		         WHERE TSRS.ROLE_CODE = 'SA'
+		           AND TSRS.ID = TSRSB.SPEC_ID
+		           AND TSUG.ROLE_ID = TSRSB.ROLE_ID)
+		   AND TSUG.USER_ID = #{userId}
+	</select>
+
+    <!-- 查询系统菜单(非叶子结点)根结点 -->
+    <select id="getMenuNode" parameterType="Integer" resultMap="SysmanuResultMap">
+		SELECT *
+	      FROM t_sys_menu TSM0
+	     WHERE TSM0.IS_LEAF = 'N'
+	       AND TSM0.DEL_FLAG = 'N'
+	       AND EXISTS
+	     (SELECT 1
+	              FROM t_sys_menu TSM1
+	             WHERE TSM0.ID = TSM1.UP_ID
+	               AND TSM1.DEL_FLAG = 'N'
+	               AND EXISTS
+	             (SELECT 1
+	                      FROM (SELECT TSM.*, MAX(TSRG.GRANT_FLAG) GRANT_FLAG
+	                              FROM t_sys_menu TSM, t_sys_role_grant TSRG
+	                             WHERE TSM.DEL_FLAG = 'N'
+	                               AND TSM.IS_LEAF = 'Y'
+	                               AND TSRG.MENU_ID = TSM.ID
+	                               AND EXISTS
+	                             (SELECT 1
+	                                      FROM t_sys_menu TSM1
+	                                     WHERE TSM1.IS_LEAF = 'N'
+	                                       AND IFNULL(TSM1.UP_ID, 0) != 0
+	                                       AND TSM1.DEL_FLAG = 'N'
+	                                       AND TSM.UP_ID = TSM1.ID
+	                                       AND EXISTS
+	                                     (SELECT 1
+	                                              FROM t_sys_menu TSM2
+	                                             WHERE IFNULL(TSM2.UP_ID, 0) = 0
+	                                               AND TSM2.DEL_FLAG = 'N'
+	                                               AND TSM1.UP_ID = TSM2.ID))
+	                               AND EXISTS
+	                             (SELECT 1
+	                                      FROM t_sys_user_grant TSUG
+	                                     WHERE TSRG.ROLE_ID = TSUG.ROLE_ID
+	                                       AND (TSUG.USER_ID = #{userId} OR
+	                                           TSUG.PROXY_ID = #{userId}))
+	                             GROUP BY TSM.ID) TSM2
+	                     WHERE TSM1.ID = TSM2.UP_ID))
+	     ORDER BY TSM0.UP_ID, TSM0.ORDER_COL
+	</select>
+
+    <!-- 查询系统菜单(非叶子结点)2级结点 -->
+    <select id="getMenuNode2" parameterType="Integer" resultMap="SysmanuResultMap" >
+		SELECT *
+          FROM t_sys_menu TSM1
+         WHERE TSM1.DEL_FLAG = 'N'
+           AND EXISTS
+         (SELECT 1
+                  FROM (SELECT TSM.*, MAX(TSRG.GRANT_FLAG) GRANT_FLAG
+                          FROM t_sys_menu TSM, t_sys_role_grant TSRG
+                         WHERE TSM.DEL_FLAG = 'N'
+                           AND TSM.IS_LEAF = 'Y'
+                           AND TSRG.MENU_ID = TSM.ID
+                           AND EXISTS
+                         (SELECT 1
+                                  FROM t_sys_menu TSM1
+                                 WHERE TSM1.IS_LEAF = 'N'
+                                   AND IFNULL(TSM1.UP_ID, 0) != 0
+                                   AND TSM1.DEL_FLAG = 'N'
+                                   AND TSM.UP_ID = TSM1.ID
+                                   AND EXISTS
+                                 (SELECT 1
+                                          FROM t_sys_menu TSM2
+                                         WHERE IFNULL(TSM2.UP_ID, 0) = 0
+                                           AND TSM2.DEL_FLAG = 'N'
+                                           AND TSM1.UP_ID = TSM2.ID))
+                           AND EXISTS (SELECT 1
+                                  FROM t_sys_user_grant TSUG
+                                 WHERE TSRG.ROLE_ID = TSUG.ROLE_ID
+                                   AND (TSUG.USER_ID = #{userId} OR
+                                       TSUG.PROXY_ID = #{userId}))
+                         GROUP BY TSM.ID) TSM2
+                 WHERE TSM1.ID = TSM2.UP_ID)
+         ORDER BY TSM1.UP_ID, TSM1.ORDER_COL
+	</select>
+    <!-- 查询系统菜单叶子结点 -->
+    <select id="getGranMenuInfo" parameterType="Integer" resultMap="SysAuthorizationResultMap">
+		SELECT TSM.*, MAX(TSRG.GRANT_FLAG) GRANT_FLAG
+	      FROM t_sys_menu TSM, t_sys_role_grant TSRG
+	     WHERE TSM.DEL_FLAG = 'N'
+	       AND TSM.IS_LEAF = 'Y'
+	       AND TSRG.MENU_ID = TSM.ID
+	       AND EXISTS
+	     (SELECT 1
+	              FROM t_sys_menu TSM1
+	             WHERE TSM1.IS_LEAF = 'N'
+	               AND IFNULL(TSM1.UP_ID, 0) != 0
+	               AND TSM1.DEL_FLAG = 'N'
+	               AND TSM.UP_ID = TSM1.ID
+	               AND EXISTS (SELECT 1
+	                      FROM t_sys_menu TSM2
+	                     WHERE IFNULL(TSM2.UP_ID, 0) = 0
+	                       AND TSM2.DEL_FLAG = 'N'
+	                       AND TSM1.UP_ID = TSM2.ID))
+	       AND EXISTS
+	     (SELECT 1
+	              FROM t_sys_user_grant TSUG
+	             WHERE TSRG.ROLE_ID = TSUG.ROLE_ID
+	               AND (TSUG.USER_ID = #{userId} OR TSUG.PROXY_ID = #{userId}))
+	     GROUP BY TSM.ID
+	     ORDER BY TSM.UP_ID, TSM.ORDER_COL
+	</select>
+
+    <!-- 查询系统菜单(非叶子结点)根结点,系统管理员专用 -->
+    <select id="getMenuNodeForSA" resultMap="SysmanuResultMap">
+		SELECT *
+          FROM t_sys_menu TSM
+         WHERE TSM.IS_LEAF = 'N'
+           AND TSM.DEL_FLAG = 'N'
+           AND IFNULL(TSM.UP_ID,0) = 0
+           AND EXISTS (SELECT 1
+                  FROM t_sys_menu TSM1
+                 WHERE TSM.ID = TSM1.UP_ID
+                   AND TSM1.DEL_FLAG = 'N')
+         ORDER BY TSM.UP_ID, TSM.ORDER_COL
+	</select>
+    <!-- 查询系统菜单(非叶子结点)2级结点 ,系统管理员专用 -->
+    <select id="getMenuNode2ForSA" resultMap="SysmanuResultMap">
+		SELECT *
+	      FROM t_sys_menu TSM
+	     WHERE TSM.IS_LEAF = 'N'
+	       AND TSM.DEL_FLAG = 'N'
+	       AND IFNULL(TSM.UP_ID,0) != 0
+	       AND EXISTS (SELECT 1
+	              FROM t_sys_menu TSM1
+	             WHERE TSM.ID = TSM1.UP_ID
+	               AND TSM1.DEL_FLAG = 'N')
+	     ORDER BY TSM.UP_ID, TSM.ORDER_COL
+
+	</select>
+    <!-- 查询系统菜单叶子结点,系统管理员专用 -->
+    <select id="getGranMenuInfoForSA" resultMap="SysAuthorizationResultMap">
+		SELECT TSM.*, 63 GRANT_FLAG
+		  FROM t_sys_menu TSM, t_sys_role_grant TSRG
+		 WHERE TSM.DEL_FLAG = 'N'
+		   AND TSM.IS_LEAF = 'Y'
+		   AND EXISTS
+		 (SELECT 1
+		          FROM t_sys_menu TSM1
+		         WHERE TSM1.IS_LEAF = 'N'
+		           AND IFNULL(TSM1.UP_ID, 0) != 0
+		           AND TSM1.DEL_FLAG = 'N'
+		           AND TSM.UP_ID = TSM1.ID
+		           AND EXISTS (SELECT 1
+		                  FROM t_sys_menu TSM2
+		                 WHERE IFNULL(TSM2.UP_ID, 0) = 0
+		                   AND TSM2.DEL_FLAG = 'N'
+		                   AND TSM1.UP_ID = TSM2.ID))
+		   AND EXISTS (SELECT 1
+		          FROM t_sys_user_grant TSUG
+		         WHERE TSUG.USER_ID = ${userId}
+		           AND TSUG.ROLE_ID = 1)
+		 GROUP BY TSM.ID
+		 ORDER BY TSM.UP_ID, TSM.ORDER_COL
+	</select>
+</mapper>
