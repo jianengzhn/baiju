@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eppear.baiju.backstage.dao.mapper.auto.SysDepartmentDao">
+  <resultMap id="BaseResultMap" type="com.eppear.baiju.backstage.dao.model.auto.SysDepartment">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="ENT_CODE" jdbcType="VARCHAR" property="entCode" />
+    <result column="ENT_KEY" jdbcType="VARCHAR" property="entKey" />
+    <result column="ENT_NAME" jdbcType="VARCHAR" property="entName" />
+    <result column="CONTACT" jdbcType="VARCHAR" property="contact" />
+    <result column="TEL" jdbcType="VARCHAR" property="tel" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="UP_ENT_CODE" jdbcType="INTEGER" property="upEntCode" />
+    <result column="UNICODE" jdbcType="VARCHAR" property="unicode" />
+    <result column="ENT_TYPE" jdbcType="VARCHAR" property="entType" />
+    <result column="ENT_FLAG" jdbcType="VARCHAR" property="entFlag" />
+    <result column="CREATOR_ID" jdbcType="INTEGER" property="creatorId" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="LAST_UP_ID" jdbcType="INTEGER" property="lastUpId" />
+    <result column="LAST_UPTIME" jdbcType="TIMESTAMP" property="lastUptime" />
+    <result column="ADDS" jdbcType="VARCHAR" property="adds" />
+  </resultMap>
+</mapper>

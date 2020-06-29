@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eppear.baiju.backstage.dao.mapper.auto.SysParamsDao">
+  <resultMap id="BaseResultMap" type="com.eppear.baiju.backstage.dao.model.auto.SysParams">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="PARM_TYPE" jdbcType="VARCHAR" property="parmType" />
+    <result column="PARM_ORDER" jdbcType="INTEGER" property="parmOrder" />
+    <result column="PARM_KEY" jdbcType="VARCHAR" property="parmKey" />
+    <result column="PARM_NAME" jdbcType="VARCHAR" property="parmName" />
+    <result column="PARM_VALUE" jdbcType="VARCHAR" property="parmValue" />
+    <result column="PARM_DICR" jdbcType="VARCHAR" property="parmDicr" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+</mapper>

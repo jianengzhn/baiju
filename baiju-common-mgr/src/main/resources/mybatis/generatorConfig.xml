@@ -17,6 +17,12 @@
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
             <property name="mappers" value="com.eppear.baiju.backstage.dao.config.MyMapper"/>
         </plugin>
+        <!-- 此处是将UserMapper改名为UserDao 接口 当然 想改成什么都行~  -->
+        <plugin type="com.eppear.baiju.common.mgr.RenameJavaMapperPlugin">
+            <property name="searchString" value="Mapper$" />
+            <property name="replaceString" value="Dao" />
+        </plugin>
+
         <!--数据库连接信息-->
         <jdbcConnection driverClass="${spring.datasource.driver-class-name}"
                         connectionURL="${spring.datasource.url}"
