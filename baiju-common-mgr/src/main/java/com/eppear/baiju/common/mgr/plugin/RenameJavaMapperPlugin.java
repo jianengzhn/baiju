@@ -1,4 +1,4 @@
-package com.eppear.baiju.common.mgr;
+package com.eppear.baiju.common.mgr.plugin;
 
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;

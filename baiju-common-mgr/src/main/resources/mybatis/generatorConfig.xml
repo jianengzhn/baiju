@@ -18,7 +18,7 @@
             <property name="mappers" value="com.eppear.baiju.backstage.dao.config.MyMapper"/>
         </plugin>
         <!-- 此处是将UserMapper改名为UserDao 接口 当然 想改成什么都行~  -->
-        <plugin type="com.eppear.baiju.common.mgr.RenameJavaMapperPlugin">
+        <plugin type="com.eppear.baiju.common.mgr.plugin.RenameJavaMapperPlugin">
             <property name="searchString" value="Mapper$" />
             <property name="replaceString" value="Dao" />
         </plugin>
