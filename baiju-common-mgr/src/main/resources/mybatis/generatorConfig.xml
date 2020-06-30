@@ -17,10 +17,20 @@
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
             <property name="mappers" value="com.eppear.baiju.backstage.dao.config.MyMapper"/>
         </plugin>
-        <!-- 此处是将UserMapper改名为UserDao 接口 当然 想改成什么都行~  -->
+        <!-- 自定义插件：将接口重命名：xxxMapper->xxxDao 当然想改成其它也可以 -->
         <plugin type="com.eppear.baiju.common.mgr.plugin.RenameJavaMapperPlugin">
             <property name="searchString" value="Mapper$" />
             <property name="replaceString" value="Dao" />
+        </plugin>
+
+        <!-- 自定义插件：将模型改名：加前缀和后缀，替换字符串-->
+        <plugin type="com.eppear.baiju.common.mgr.plugin.RenameJavaModelPlugin">
+            <!--
+            <property name="searchString" value="Mapper$" />
+            <property name="replaceString" value="Dao" />
+            <property name="prefixString" value="" />
+            -->
+            <property name="suffixString" value="DO" />
         </plugin>
 
         <!--数据库连接信息-->

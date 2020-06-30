@@ -1,7 +1,7 @@
 package com.eppear.baiju.backstage.dao.mapper.auto;
 
 import com.eppear.baiju.backstage.dao.config.MyMapper;
-import com.eppear.baiju.backstage.dao.model.auto.SysParams;
+import com.eppear.baiju.backstage.dao.model.auto.SysParamsDO;
 
-public interface SysParamsDao extends MyMapper<SysParams> {
+public interface SysParamsDao extends MyMapper<SysParamsDO> {
 }

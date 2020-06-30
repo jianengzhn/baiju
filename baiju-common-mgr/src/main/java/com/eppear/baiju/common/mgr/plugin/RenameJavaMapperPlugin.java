@@ -35,12 +35,12 @@ public class RenameJavaMapperPlugin extends PluginAdapter {
         } else {
             if (!stringHasValue(searchString)) {
                 warnings.add(getString("ValidationError.18",
-                        "RenameExampleClassPlugin",
+                        "RenameJavaMapperPlugin",
                         "searchString"));
             }
             if (!stringHasValue(replaceString)) {
                 warnings.add(getString("ValidationError.18",
-                        "RenameExampleClassPlugin",
+                        "RenameJavaMapperPlugin",
                         "replaceString"));
             }
         }

@@ -1,6 +1,6 @@
 package com.eppear.baiju.backstage.service.system;
 
-import com.eppear.baiju.backstage.dao.model.auto.SysUser;
+import com.eppear.baiju.backstage.dao.model.auto.SysUserDO;
 import com.eppear.baiju.backstage.dao.model.system.SysAuthorization;
 
 import java.util.List;
@@ -17,7 +17,7 @@ public interface SysAuthorizationService {
      * @param userName 用户账号
      * @return 用户对像
      */
-    SysUser getUserByName(String userName);
+    SysUserDO getUserByName(String userName);
 
     /**
      * 根据用户ID查询此用户被授权的菜单项，及授权值
