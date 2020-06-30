@@ -2,6 +2,7 @@ package com.eppear.baiju.config;
 
 import com.eppear.baiju.security.AppAuthenticationFailureHandler;
 import com.eppear.baiju.security.AppLogoutSuccessHandler;
+import com.eppear.baiju.security.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +10,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.session.security.web.authentication.SpringSessionRememberMeServices;
 
 /**
@@ -38,10 +40,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return rememberMeServices;
     }
 
+    @Bean
+    @Override
+    public UserDetailsService userDetailsService() {
+        //获取用户账号密码及权限信息
+        return new UserDetailsServiceImpl();
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         // 配置认证方式等
-        super.configure(auth);
+        auth.userDetailsService(userDetailsService());
     }
 
     @Override

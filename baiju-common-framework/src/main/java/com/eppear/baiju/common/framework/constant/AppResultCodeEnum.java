@@ -40,6 +40,7 @@ public enum AppResultCodeEnum implements BaseResultCode {
     USER_ACCOUNT_NOT_EXIST(2007, "账号不存在"),
     USER_ACCOUNT_ALREADY_EXIST(2008, "账号已存在"),
     USER_ACCOUNT_USE_BY_OTHERS(2009, "账号下线"),
+    USER_ACCOUNT_USE_NAME_NOT_NULL(2010, "用户账号不能为空"),
 
     /** 业务错误 */
     NO_PERMISSION(3001, "没有权限");
