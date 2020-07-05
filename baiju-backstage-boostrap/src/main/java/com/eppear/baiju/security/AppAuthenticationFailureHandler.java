@@ -44,7 +44,7 @@ public class AppAuthenticationFailureHandler implements AuthenticationFailureHan
             res = Response.fail(AppResultCodeEnum.USER_CREDENTIALS_ERROR);
         }else if(exception instanceof InternalAuthenticationServiceException){
             // 用户不存在
-            res = Response.fail(AppResultCodeEnum.USER_CREDENTIALS_ERROR);
+            res = Response.fail(AppResultCodeEnum.USER_ACCOUNT_NOT_EXIST);
         }else {
             res = Response.fail();
         }

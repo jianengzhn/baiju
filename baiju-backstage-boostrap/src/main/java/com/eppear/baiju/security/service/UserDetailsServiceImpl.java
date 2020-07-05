@@ -46,10 +46,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                     new SimpleGrantedAuthority(String.valueOf(sysAuthorization.getGrantFlag()));
             grantedAuthorities.add(grantedAuthority);
         });
-        Boolean acEnable = (sysUserDO.getEnabled() == 0);
-        Boolean acctNonExp = (sysUserDO.getAcctNonExp() == 0);
-        Boolean pwdNonExp  = (sysUserDO.getPwdNonExp() == 0);
-        Boolean accountNonLocked = (sysUserDO.getAcctNonLocked() == 0);
+        boolean acEnable = (sysUserDO.getEnabled() == 0);
+        boolean acctNonExp = (sysUserDO.getAcctNonExp() == 0);
+        boolean pwdNonExp  = (sysUserDO.getPwdNonExp() == 0);
+        boolean accountNonLocked = (sysUserDO.getAcctNonLocked() == 0);
 
         return new User(sysUserDO.getAccount(),sysUserDO.getPassword(),
                 acEnable,acctNonExp,pwdNonExp,accountNonLocked,grantedAuthorities);

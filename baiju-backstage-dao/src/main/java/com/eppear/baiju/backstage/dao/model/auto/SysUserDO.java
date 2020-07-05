@@ -70,7 +70,7 @@ public class SysUserDO {
     /**
      * 密码是否过期，0是，1否
      */
-    @Column(name = "PWD__NON_EXP")
+    @Column(name = "PWD_NON_EXP")
     private Integer pwdNonExp;
 
     /**
@@ -292,7 +292,7 @@ public class SysUserDO {
     /**
      * 获取密码是否过期，0是，1否
      *
-     * @return PWD__NON_EXP - 密码是否过期，0是，1否
+     * @return PWD_NON_EXP - 密码是否过期，0是，1否
      */
     public Integer getPwdNonExp() {
         return pwdNonExp;

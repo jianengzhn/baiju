@@ -2,6 +2,7 @@ package com.eppear.baiju.backstage.dao.mapper.system;
 
 import com.eppear.baiju.backstage.dao.config.MyMapper;
 import com.eppear.baiju.backstage.dao.model.system.SysAuthorization;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -9,7 +10,8 @@ import java.util.List;
  * @author zhangjf
  * @date 2020-06-29 21:30:39
  */
-public interface SysAuthorizationDao extends MyMapper {
+@Mapper
+public interface SysAuthorizationDao extends MyMapper<SysAuthorization> {
 
     /**
      * 根据用户ID查询此用户的系统管理员标识

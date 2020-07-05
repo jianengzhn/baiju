@@ -82,7 +82,7 @@
 	</select>
 
     <!-- 查询系统菜单(非叶子结点)2级结点 -->
-    <select id="getMenuNode2" parameterType="Integer" resultMap="SysmanuResultMap" >
+    <select id="getMenuNode2" parameterType="Integer" resultMap="com.eppear.baiju.backstage.dao.model.system.SysAuthorization" >
 		SELECT *
           FROM t_sys_menu TSM1
          WHERE TSM1.DEL_FLAG = 'N'
@@ -168,7 +168,6 @@
 	             WHERE TSM.ID = TSM1.UP_ID
 	               AND TSM1.DEL_FLAG = 'N')
 	     ORDER BY TSM.UP_ID, TSM.ORDER_COL
-
 	</select>
     <!-- 查询系统菜单叶子结点,系统管理员专用 -->
     <select id="getGranMenuInfoForSA" resultMap="SysAuthorizationResultMap">
