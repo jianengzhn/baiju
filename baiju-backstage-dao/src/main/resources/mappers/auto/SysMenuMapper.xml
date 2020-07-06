@@ -118,7 +118,7 @@
     ORDER BY TSM1.UP_ID, TSM1.ORDER_COL
   </select>
   <!-- 查询系统菜单叶子结点 -->
-  <select id="getGranMenuInfo" parameterType="Integer" resultType="SysAuthorizationResultMap">
+  <select id="getGranMenuInfo" parameterType="Integer" resultMap="SysAuthorizationResultMap">
     SELECT TSM.*, MAX(TSRG.GRANT_FLAG) GRANT_FLAG
     FROM t_sys_menu TSM, t_sys_role_grant TSRG
     WHERE TSM.DEL_FLAG = 'N'

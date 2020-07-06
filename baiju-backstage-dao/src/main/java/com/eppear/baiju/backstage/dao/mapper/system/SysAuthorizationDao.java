@@ -10,8 +10,7 @@ import java.util.List;
  * @author zhangjf
  * @date 2020-06-29 21:30:39
  */
-@Mapper
-public interface SysAuthorizationDao extends MyMapper<SysAuthorization> {
+public interface SysAuthorizationDao {
 
     /**
      * 根据用户ID查询此用户的系统管理员标识

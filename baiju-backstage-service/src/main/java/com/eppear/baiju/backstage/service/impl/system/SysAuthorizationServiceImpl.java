@@ -21,8 +21,11 @@ public class SysAuthorizationServiceImpl implements SysAuthorizationService {
 
     @Autowired
     private SysUserDao sysUserDao;
+//    @Autowired
+//    private SysAuthorizationDao sysAuthorizationDao;
+
     @Autowired
-    private SysAuthorizationDao sysAuthorizationDao;
+    private SysMenuDao sysAuthorizationDao;
 
     @Override
     public SysUserDO getUserByName(String userName) {
@@ -33,7 +36,7 @@ public class SysAuthorizationServiceImpl implements SysAuthorizationService {
 
     @Override
     public List<SysAuthorization> getGranMenuInfos(Integer userId) {
-        //List<SysMenuDO> mns = sysAuthorizationDao.selectAll();
+//        List<SysMenuDO> mns = sysAuthorizationDao.selectAll();
         List<SysAuthorization> ret = sysAuthorizationDao.getGranMenuInfo(userId);
        return ret;
     }
