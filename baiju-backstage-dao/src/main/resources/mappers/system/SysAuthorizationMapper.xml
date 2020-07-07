@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.eppear.baiju.backstage.dao.mapper.system.SysAuthorizationDao">
-	<resultMap id="SysmanuResultMap" type="com.eppear.baiju.backstage.dao.model.auto.SysMenu">
+	<resultMap id="SysmanuResultMap" type="com.eppear.baiju.backstage.dao.model.auto.SysMenuDO">
 		<id column="ID" jdbcType="INTEGER" property="id" />
 		<result column="UP_ID" jdbcType="INTEGER" property="upId" />
 		<result column="NAME" jdbcType="VARCHAR" property="name" />
@@ -82,7 +82,7 @@
 	</select>
 
     <!-- 查询系统菜单(非叶子结点)2级结点 -->
-    <select id="getMenuNode2" parameterType="Integer" resultMap="com.eppear.baiju.backstage.dao.model.system.SysAuthorization" >
+    <select id="getMenuNode2" parameterType="Integer" resultMap="SysmanuResultMap" >
 		SELECT *
           FROM t_sys_menu TSM1
          WHERE TSM1.DEL_FLAG = 'N'

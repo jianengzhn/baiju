@@ -51,9 +51,11 @@ spring:
       maxPoolPreparedStatementPerConnectionSize: 20
       useGlobalDataSourceStat: true
       connectProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+# mybatis配置
 mybatis:
   type-aliases-package: com.eppear.baiju.backstage.dao.model
   mapper-locations: classpath:mappers/**/*Mapper.xml
+# 通用mapper配置
 mapper:
   mappers: com.eppear.baiju.backstage.dao.config.MyMapper
   not-empty: true

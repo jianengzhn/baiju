@@ -15,11 +15,6 @@ import tk.mybatis.spring.annotation.MapperScan;
  * @date 2020-06-03 21:22:55
  */
 @Configuration
-@MapperScan(value = "com.eppear.baiju.backstage.dao.mapper"
-//    properties = {
-//        "mappers=com.eppear.baiju.backstage.dao.config.MyMapper",
-//        "notEmpty=true"
-//    }
-)
+@MapperScan(value = "com.eppear.baiju.backstage.dao.mapper")
 public class MapperConfig {
 }

@@ -1,9 +1,7 @@
 package com.eppear.baiju.backstage.service.impl.system;
 
-import com.eppear.baiju.backstage.dao.mapper.auto.SysMenuDao;
 import com.eppear.baiju.backstage.dao.mapper.auto.SysUserDao;
 import com.eppear.baiju.backstage.dao.mapper.system.SysAuthorizationDao;
-import com.eppear.baiju.backstage.dao.model.auto.SysMenuDO;
 import com.eppear.baiju.backstage.dao.model.auto.SysUserDO;
 import com.eppear.baiju.backstage.dao.model.system.SysAuthorization;
 import com.eppear.baiju.backstage.service.system.SysAuthorizationService;
@@ -13,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
+ * 权限认证服务类，从业务系统中抽取数据放入框架中
  * @author zhangjf
  * @date 2020-07-01 20:35:16
  */
@@ -21,11 +20,8 @@ public class SysAuthorizationServiceImpl implements SysAuthorizationService {
 
     @Autowired
     private SysUserDao sysUserDao;
-//    @Autowired
-//    private SysAuthorizationDao sysAuthorizationDao;
-
     @Autowired
-    private SysMenuDao sysAuthorizationDao;
+    private SysAuthorizationDao sysAuthorizationDao;
 
     @Override
     public SysUserDO getUserByName(String userName) {
@@ -36,7 +32,6 @@ public class SysAuthorizationServiceImpl implements SysAuthorizationService {
 
     @Override
     public List<SysAuthorization> getGranMenuInfos(Integer userId) {
-//        List<SysMenuDO> mns = sysAuthorizationDao.selectAll();
         List<SysAuthorization> ret = sysAuthorizationDao.getGranMenuInfo(userId);
        return ret;
     }
