@@ -1,6 +1,7 @@
 #日志级别
 logging:
   level:
+#    root: debug
     com:
       eppear: debug
 

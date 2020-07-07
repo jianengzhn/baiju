@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.session.security.web.authentication.SpringSessionRememberMeServices;
 
 /**
@@ -38,6 +39,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // optionally customize
         rememberMeServices.setAlwaysRemember(true);
         return rememberMeServices;
+    }
+
+    /**
+     * 用户密码加密加官方式配置
+     *
+     * @return
+     */
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        // 设置默认的加密方式（强hash方式加密）
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
