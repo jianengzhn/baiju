@@ -1,4 +1,4 @@
-package com.eppear.baiju.security;
+package com.eppear.baiju.security.handler;
 
 import cn.hutool.json.JSON;
 import cn.hutool.json.JSONObject;

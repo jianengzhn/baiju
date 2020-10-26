@@ -1,4 +1,4 @@
-package com.eppear.baiju.security;
+package com.eppear.baiju.security.handler;
 
 import cn.hutool.json.JSON;
 import cn.hutool.json.JSONObject;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * 登出成功处理吕，并且登出之后将cookie失效或删除
+ * 登出成功处理器，并且登出之后将cookie失效或删除
  *
  * @author jianf
  * @date 2020年05月28 15:40

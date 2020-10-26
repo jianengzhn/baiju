@@ -32,7 +32,14 @@ public class SysAuthorizationServiceImpl implements SysAuthorizationService {
 
     @Override
     public List<SysAuthorization> getGranMenuInfos(Integer userId) {
-        List<SysAuthorization> ret = sysAuthorizationDao.getGranMenuInfo(userId);
+        List<SysAuthorization> ret;
+        Integer saFlag = sysAuthorizationDao.getSaFlag(userId);
+        //saFlag ==1 为系统管理员
+        if(saFlag ==1){
+            ret = sysAuthorizationDao.getGranMenuInfoForSA(userId);
+        }else{
+            ret = sysAuthorizationDao.getGranMenuInfo(userId);
+        }
        return ret;
     }
 }

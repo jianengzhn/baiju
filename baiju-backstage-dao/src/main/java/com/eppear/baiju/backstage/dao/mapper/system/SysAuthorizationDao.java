@@ -3,6 +3,7 @@ package com.eppear.baiju.backstage.dao.mapper.system;
 import com.eppear.baiju.backstage.dao.config.MyMapper;
 import com.eppear.baiju.backstage.dao.model.system.SysAuthorization;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 

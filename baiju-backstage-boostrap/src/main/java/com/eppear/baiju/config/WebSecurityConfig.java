@@ -1,7 +1,7 @@
 package com.eppear.baiju.config;
 
-import com.eppear.baiju.security.AppAuthenticationFailureHandler;
-import com.eppear.baiju.security.AppLogoutSuccessHandler;
+import com.eppear.baiju.security.handler.AppAuthenticationFailureHandler;
+import com.eppear.baiju.security.handler.AppLogoutSuccessHandler;
 import com.eppear.baiju.security.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
