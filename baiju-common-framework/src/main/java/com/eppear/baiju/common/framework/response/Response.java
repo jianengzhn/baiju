@@ -110,7 +110,7 @@ public class Response<T> implements Serializable {
      * @param <T> 响应数据
      * @return 响应实体
      */
-    public static <T> Response<T> success(T data, String parameterData, BaseResultCode baseResultCode) {
+    public static <T> Response<T> success(T data, BaseResultCode baseResultCode, String parameterData) {
         return init(baseResultCode, data ,parameterData);
     }
 
