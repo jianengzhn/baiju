@@ -48,7 +48,7 @@ public class AppSecurityInterceptor extends AbstractSecurityInterceptor implemen
         //里面调用MyInvocationSecurityMetadataSource的getAttributes(Object object)这个方法获取fi对应的所有权限
         //再调用MyAccessDecisionManager的decide方法来校验用户的权限是否足够
         InterceptorStatusToken token = super.beforeInvocation(fi);
-        fi.DummyRequest
+        //fi.DummyRequest
         try {
             //执行下一个拦截器
             fi.getChain().doFilter(fi.getRequest(), fi.getResponse());

@@ -22,8 +22,8 @@ public class AppFilterInvocationSecurityMetadataSource implements FilterInvocati
     @Override
     public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
         //TODO 在这里准备权限数据，以备后边使用
-        //获取请求地址
-        String requestUrl = ((FilterInvocation) o).getRequestUrl();
+        /*//获取请求地址
+        String requestUrl = ((FilterInvocation) object).getRequestUrl();
         //查询具体某个接口的权限
         List<SysPermission> permissionList =  sysAuthorizationService.selectListByPath(requestUrl);
 
@@ -35,7 +35,8 @@ public class AppFilterInvocationSecurityMetadataSource implements FilterInvocati
         for(int i = 0;i<permissionList.size();i++){
             attributes[i] = permissionList.get(i).getPermissionCode();
         }
-        return SecurityConfig.createList(attributes);
+        return SecurityConfig.createList(attributes);*/
+        return null;
     }
 
     @Override

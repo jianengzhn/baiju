@@ -7,6 +7,8 @@ import cn.hutool.core.util.StrUtil;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
@@ -25,6 +27,16 @@ public class StrUtils extends StrUtil {
     private static final String STR_DATA ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     private static final String UNKNOWN ="unknown";
     private static final Pattern NUMBER_PATTERN = Pattern.compile("[0-9]*");
+
+    private static Random rand;
+
+    static {
+        try {
+            rand = SecureRandom.getInstanceStrong();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 是否包含字指定符串
@@ -267,10 +279,9 @@ public class StrUtils extends StrUtil {
     }
 
     public static String  randomNum(Integer digCount){
-        Random rnd = new Random();
         StringBuilder sb = new StringBuilder(digCount);
         for(int i=0; i < digCount; i++) {
-            sb.append((char) ('0' + rnd.nextInt(10)));
+            sb.append((char) ('0' + rand.nextInt(10)));
         }
         return sb.toString();
 
@@ -282,10 +293,9 @@ public class StrUtils extends StrUtil {
      * @return 字符串
      */
     public static String randomStr(Integer length){
-        Random random=new Random();
         StringBuffer sb=new StringBuffer();
         for(int i=0;i<length;i++){
-            int number=random.nextInt(62);
+            int number=rand.nextInt(62);
             sb.append(STR_DATA.charAt(number));
         }
         return sb.toString();
