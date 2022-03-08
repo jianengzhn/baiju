@@ -25,8 +25,8 @@ public class BaijuCommonMgrApplication {
         boolean overwrite =true;
         // 生成过程中的相关信息
         List<String> warnings = new ArrayList<String>();
-        // 配置文件位置
-        String pathName = "baiju-common-mgr/src/main/resources/mybatis/generatorConfig.xml";
+        // 配置文件位置可以是相对路径
+        String pathName = "mybatis/generatorConfig.xml";
 
         File configFile = new File(pathName);
         ConfigurationParser cp = new ConfigurationParser(warnings);
