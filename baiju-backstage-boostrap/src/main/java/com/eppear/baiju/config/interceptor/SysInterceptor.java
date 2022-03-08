@@ -88,7 +88,7 @@ public class SysInterceptor extends HandlerInterceptorAdapter {
      * @param parameterMap 请求参数
      * @return Map格式的参数
      */
-    private Map<String,String> transToMap(Map parameterMap) {
+    private Map<String,String> transToMap(Map<String,String[]> parameterMap) {
 
         Map<String,String> returnMap = new HashMap<>(2);
         Iterator entries = parameterMap.entrySet().iterator();
@@ -103,8 +103,8 @@ public class SysInterceptor extends HandlerInterceptorAdapter {
                 value = "";
             } else if (valueObj instanceof String[]) {
                 String[] values = (String[]) valueObj;
-                for (int i = 0; i < values.length; i++) {
-                    value = values[i] + ",";
+                for (String s : values) {
+                    value = s + ",";
                 }
                 value = value.substring(0, value.length() - 1);
             } else {

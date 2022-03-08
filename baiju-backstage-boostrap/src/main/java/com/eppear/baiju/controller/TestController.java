@@ -5,6 +5,7 @@ import com.eppear.baiju.common.framework.execption.AppException;
 import com.eppear.baiju.common.framework.response.Response;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +36,7 @@ public class TestController {
     }
 
     @ResponseBody
-    @RequestMapping("3")
+    @RequestMapping(value = "3",name = "测试3",method = RequestMethod.POST)
     public Response test3() {
         return Response.fail();
     }
@@ -44,5 +45,6 @@ public class TestController {
     @RequestMapping("4")
     public Response<Object> test4() {
         return Response.success();
+
     }
 }

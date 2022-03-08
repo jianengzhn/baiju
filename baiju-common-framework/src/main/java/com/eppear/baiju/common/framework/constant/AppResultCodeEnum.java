@@ -45,8 +45,8 @@ public enum AppResultCodeEnum implements BaseResultCode {
     /** 业务错误 */
     NO_PERMISSION(3001, "没有权限");
 
-    private Integer code;
-    private String message;
+    private final Integer code;
+    private final String message;
 
     AppResultCodeEnum(Integer code, String message) {
         this.code = code;
